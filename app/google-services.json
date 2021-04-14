@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "660560367341",
+    "firebase_url": "https://personal-catalogue-default-rtdb.firebaseio.com",
+    "project_id": "personal-catalogue",
+    "storage_bucket": "personal-catalogue.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:660560367341:android:72a3b0b63b6ae704e146e4",
+        "android_client_info": {
+          "package_name": "com.project.personalcatalogue"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "660560367341-8dtorhhurp9t9fj4jam3jjpuot680j5v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyANU6KBfrSYwTeiV3iiqV1glEVNPnawm_w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "660560367341-8dtorhhurp9t9fj4jam3jjpuot680j5v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
