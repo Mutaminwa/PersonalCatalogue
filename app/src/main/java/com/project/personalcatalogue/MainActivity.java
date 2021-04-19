@@ -41,9 +41,7 @@ import com.google.firebase.auth.FirebaseAuth;
                 case R.id.item3:
                     selectedFragment = new SearchFragment();
                     break;
-                case R.id.item4:
-                    selectedFragment = new UserFragment();
-                    break;
+
             }
             
             getSupportFragmentManager().beginTransaction()
