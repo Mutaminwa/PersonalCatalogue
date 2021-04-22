@@ -45,8 +45,7 @@ import com.google.firebase.auth.FirebaseAuth;
             }
             
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.fragment_layout,
-                    selectedFragment).commit();
+                    .replace(R.id.fragment_layout, selectedFragment).commit();
 
             return true;
         }

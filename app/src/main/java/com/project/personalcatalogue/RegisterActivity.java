@@ -21,6 +21,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -104,6 +105,7 @@ public class RegisterActivity extends AppCompatActivity {
                             Toast.makeText(RegisterActivity.this, "Success!", Toast.LENGTH_SHORT).show();
                             userID = fAuth.getCurrentUser().getUid();
                             DocumentReference docRef = fStore.collection("users").document(userID);
+                            CollectionReference shelfRef = fStore.collection("users/" + userID + "/shelves");
 
                             Map<String,Object> user = new HashMap<>();
                             user.put("userName", userName);
@@ -112,6 +114,16 @@ public class RegisterActivity extends AppCompatActivity {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Log.d(TAG, "onSuccess: User profile is created for "+ userID);
+                                }
+                            });
+
+                            Map<String,Object> fave = new HashMap<>();
+                            fave.put("name", "My Books");
+                            fave.put("description", "A collection of your books");
+                            shelfRef.document("myBooks").set(fave).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Log.d(TAG, "onSuccess: Bookshelf is created for "+ userID);
                                 }
                             });
                             startActivity(new Intent (getApplicationContext(), MainActivity.class));

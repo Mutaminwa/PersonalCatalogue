@@ -6,21 +6,25 @@
     android:layout_margin="9dp"
     android:layout_marginStart="9dp"
     android:layout_marginEnd="9dp"
-    app:cardBackgroundColor="@color/white"
+    app:cardBackgroundColor="@color/dark_grey"
     app:cardCornerRadius="5dp">
 
     <androidx.appcompat.widget.LinearLayoutCompat
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:orientation="vertical">
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        android:padding="10dp">
+
         <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/shelfname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/quicksand"
+            android:padding="10dp"
             android:text="Shelf Name"
-            android:id="@+id/shelfname"
-            android:textSize="16dp"
-            android:padding="10dp"/>
+            android:textColor="@color/white"
+            android:textSize="16dp" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
 </androidx.cardview.widget.CardView>
