@@ -40,14 +40,15 @@
         android:id="@+id/txtMyCollections"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="492dp"
         android:fontFamily="@font/quicksand"
         android:text="My Shelves"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.085"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.083"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.324" />
 
     <Button
         android:id="@+id/btnAddNewShelf"
@@ -62,13 +63,13 @@
         app:layout_constraintHorizontal_bias="0.09"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.21" />
+        app:layout_constraintVertical_bias="0.229" />
 
     <Button
         android:id="@+id/btnLogout"
         android:layout_width="wrap_content"
         android:layout_height="62dp"
-        android:layout_marginBottom="548dp"
+        android:layout_marginBottom="588dp"
         android:backgroundTint="@color/black"
         android:fontFamily="@font/quicksand"
         android:text="Log Out"
@@ -80,8 +81,8 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/collectionsRecycler"
-        android:layout_width="345dp"
-        android:layout_height="444dp"
+        android:layout_width="349dp"
+        android:layout_height="520dp"
         android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.52"

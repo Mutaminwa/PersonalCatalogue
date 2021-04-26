@@ -17,52 +17,63 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.SetOptions;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class AddCollectionActivity extends AppCompatActivity implements View.OnClickListener {
+public class UpdateCollectionActivity extends AppCompatActivity implements View.OnClickListener {
 
-    EditText sName, sDesc;
-    Button addShelfButton;
+    TextView sName;
+    EditText sDesc;
+    Button editShelfButton;
     FirebaseFirestore db = FirebaseFirestore.getInstance(); // Create object of the Firebase Realtime Database
     FirebaseAuth fAuth = FirebaseAuth.getInstance();
-    String userID = fAuth.getCurrentUser().getUid();
+    String shelfID, userID = fAuth.getCurrentUser().getUid();
     CollectionReference shelfRef = db.collection("users/"+ userID + "/shelves");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_collection);
+        setContentView(R.layout.activity_update_collection);
 
-        sName = findViewById(R.id.txtShelfName);
-        sDesc = findViewById(R.id.txtShelfDesc);
-        addShelfButton = findViewById(R.id.btnAddShelf);
+        sName = findViewById(R.id.txtEditCollection);
+        sDesc = findViewById(R.id.txtNewDesc);
+        editShelfButton = findViewById(R.id.btnEditShelf);
 
-        addShelfButton.setOnClickListener(this);
+        editShelfButton.setOnClickListener(this);
+
+        if(getIntent().hasExtra("EXTRA_ID")) {
+            shelfID = getIntent().getStringExtra("EXTRA_ID");
+        }
+
+        shelfRef.document(shelfID).get()
+                .addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        sName.setText(shelfID);
+                    }
+                });
+
     }
     @Override
     public void onClick(final View v) {
-        if (v == addShelfButton) {
+        if (v == editShelfButton) {
 
-            String shelfName = sName.getText().toString().trim();
             String shelfDesc = sDesc.getText().toString().trim();
 
-            if(TextUtils.isEmpty(shelfName)){
-                sName.setError("Name is a required field.");
+            if(shelfDesc.length() > 250){
+                sDesc.setError("That's too many words ( ._.)");
                 return;
             }
 
-            Map<String,Object> shelf = new HashMap<>();
-            shelf.put("name", shelfName);
-            shelf.put("description", shelfDesc);
-            shelfRef.document(shelfName).set(shelf).addOnSuccessListener(new OnSuccessListener<Void>() {
+            shelfRef.document(shelfID).update("description", shelfDesc).addOnSuccessListener(new OnSuccessListener<Void>() {
                 @Override
                 public void onSuccess(Void aVoid) {
-                    Log.d("Success", "onSuccess: Bookshelf is created for "+ userID);
-                    Snackbar.make(v, "Bookshelf is created!", Snackbar.LENGTH_SHORT).show();
-                    startActivity(new Intent (AddCollectionActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                    Snackbar.make(v, "Shelf is updated!", Snackbar.LENGTH_SHORT).show();
+                    startActivity(new Intent(UpdateCollectionActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
@@ -71,5 +82,5 @@ public class AddCollectionActivity extends AppCompatActivity implements View.OnC
                 }
             });
         }
-    }    
+    }
 }

@@ -6,4 +6,70 @@
     android:layout_height="match_parent"
     tools:context=".CollectionActivity">
 
+    <TextView
+        android:id="@+id/txtCollectionsName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/cormorant_semibold"
+        android:hint="Hello"
+        android:textColor="@color/black"
+        android:textSize="45sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.077" />
+
+    <TextView
+        android:id="@+id/txtCollectionsDesc"
+        android:layout_width="317dp"
+        android:layout_height="53dp"
+        android:layout_marginBottom="576dp"
+        android:fontFamily="@font/quicksand"
+        android:hint="My Shelves"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnDeleteShelf"
+        android:layout_width="wrap_content"
+        android:layout_height="62dp"
+        android:layout_marginBottom="480dp"
+        android:backgroundTint="@color/black"
+        android:fontFamily="@font/quicksand"
+        android:text="Delete"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.809"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/btnEditShelf"
+        android:layout_width="wrap_content"
+        android:layout_height="62dp"
+        android:backgroundTint="@color/black"
+        android:fontFamily="@font/quicksand"
+        android:text="Edit Shelf"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.138"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.308" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/bookshelfRecycler"
+        android:layout_width="345dp"
+        android:layout_height="444dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.948" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

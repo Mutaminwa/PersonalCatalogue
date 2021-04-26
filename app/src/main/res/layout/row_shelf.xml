@@ -6,7 +6,7 @@
     android:layout_margin="9dp"
     android:layout_marginStart="9dp"
     android:layout_marginEnd="9dp"
-    app:cardBackgroundColor="@color/dark_grey"
+    app:cardBackgroundColor="@color/black"
     app:cardCornerRadius="5dp">
 
     <androidx.appcompat.widget.LinearLayoutCompat
@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:orientation="vertical"
-        android:padding="10dp">
+        android:padding="5dp">
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/shelfname"

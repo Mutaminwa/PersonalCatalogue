@@ -6,6 +6,7 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -13,6 +14,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -21,6 +23,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -63,6 +66,8 @@ public class HomeFragment extends Fragment {
         // Connecting object of required Adapter class to
         // the Adapter class itself
         shelfadapter = new shelfAdapter(options);
+
+
     }
 
     @Override
@@ -79,6 +84,18 @@ public class HomeFragment extends Fragment {
 
         // Connecting Adapter class with the Recycler view*/
         recyclerView.setAdapter(shelfadapter);
+
+        shelfadapter.setOnItemClickListener(new shelfAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(DocumentSnapshot documentSnapshot, int position) {
+                String id = documentSnapshot.getId();
+                Intent intent = new Intent(mContext, CollectionActivity.class);
+                intent.putExtra("EXTRA_ID", id);
+                startActivity(intent);
+
+            }
+        });
+
 
         //Setting log out function
         Button logOutButton = (Button) view.findViewById(R.id.btnLogout);
@@ -104,6 +121,7 @@ public class HomeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
 
         //Putting username in welcome message
         db.collection("users")
@@ -142,5 +160,6 @@ public class HomeFragment extends Fragment {
         super.onStop();
         shelfadapter.stopListening();
     }
+
 
 }
