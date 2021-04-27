@@ -96,19 +96,6 @@ public class HomeFragment extends Fragment {
             }
         });
 
-
-        //Setting log out function
-        Button logOutButton = (Button) view.findViewById(R.id.btnLogout);
-        logOutButton.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(mContext, LoginActivity.class));
-            }
-        });
-
         //Setting "add new shelf" function
         Button addShelfButton = (Button) view.findViewById(R.id.btnAddNewShelf);
         addShelfButton.setOnClickListener(new View.OnClickListener()

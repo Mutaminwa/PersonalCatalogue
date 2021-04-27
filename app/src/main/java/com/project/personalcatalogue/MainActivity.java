@@ -4,13 +4,10 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.auth.FirebaseAuth;
 
  public class MainActivity extends AppCompatActivity {
 
@@ -20,7 +17,6 @@ import com.google.firebase.auth.FirebaseAuth;
         setContentView(R.layout.activity_main);
 
         BottomNavigationView btmNav = findViewById(R.id.bottom_navigation);
-        //btmNav.setOnClickListener(navListener);
         btmNav.setOnNavigationItemSelectedListener(navListener);
 
         //Setting home fragment as default
@@ -39,7 +35,7 @@ import com.google.firebase.auth.FirebaseAuth;
                     selectedFragment = new DiscoverFragment();
                     break;
                 case R.id.item3:
-                    selectedFragment = new SearchFragment();
+                    selectedFragment = new UserFragment();
                     break;
 
             }
