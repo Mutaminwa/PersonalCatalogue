@@ -110,6 +110,7 @@ public class CollectionActivity extends AppCompatActivity {
                     public void onSuccess(Void aVoid) {
                         Snackbar.make(v, "Bookshelf was deleted", Snackbar.LENGTH_SHORT).show();
                         startActivity(new Intent(CollectionActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                        finish();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override

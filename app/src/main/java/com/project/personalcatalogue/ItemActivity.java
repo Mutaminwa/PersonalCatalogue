@@ -64,10 +64,10 @@ public class ItemActivity extends AppCompatActivity {
                         if(documentSnapshot.exists()){
                             bTitle.setText(documentSnapshot.getString("title"));
                             bAuthors.setText(documentSnapshot.getString("authors"));
-                            bAuthors.setText(documentSnapshot.getString("isbn"));
-                            bAuthors.setText(documentSnapshot.getString("isbn13"));
-                            bAuthors.setText(documentSnapshot.getString("description"));
-                            bAuthors.setText(documentSnapshot.getString("notes"));
+                            bISBN.setText(documentSnapshot.getString("isbn"));
+                            bISBNthirteen.setText(documentSnapshot.getString("isbn13"));
+                            bDesc.setText(documentSnapshot.getString("description"));
+                            bNotes.setText(documentSnapshot.getString("notes"));
                             ratingBar.setRating(Float.parseFloat(documentSnapshot.getString("rating")));
 
                         } else {
@@ -120,6 +120,7 @@ public class ItemActivity extends AppCompatActivity {
                     Intent intent = new Intent(ItemActivity.this, CollectionActivity.class);
                     intent.putExtra("EXTRA_ID", shelfID);
                     startActivity(intent);
+                    finish();
                 }
             }
         });
@@ -134,6 +135,7 @@ public class ItemActivity extends AppCompatActivity {
                         Intent intent = new Intent(ItemActivity.this, CollectionActivity.class);
                         intent.putExtra("EXTRA_ID", shelfID);
                         startActivity(intent);
+                        finish();
                     }
                 }).addOnFailureListener(new OnFailureListener() {
                     @Override

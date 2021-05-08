@@ -76,11 +76,6 @@ public class AddItemActivity extends AppCompatActivity {
                     bISBN.requestFocus();
                     bISBN.setError("The ISBN can't have letters.");
                 }
-                else if(!ISBNthirteen.matches("[0-9 ]+"))
-                {
-                    bISBNthirteen.requestFocus();
-                    bISBNthirteen.setError("The ISBN can't have letters.");
-                }
                 else {
                     Map<String,Object> book = new HashMap<>();
                     book.put("title", Title);
@@ -96,11 +91,13 @@ public class AddItemActivity extends AppCompatActivity {
                             Log.d("Success", "onSuccess: Book is created for "+ userID);
                             Snackbar.make(v, "Your book has been added!", Snackbar.LENGTH_SHORT).show();
                             startActivity(new Intent(AddItemActivity.this, CollectionActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                            finish();
                         }
                     }).addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
                             Log.e("Fail", "That did not work. ", e);
+                            Snackbar.make(v, "Your book couldn't be added. Maybe try again?", Snackbar.LENGTH_SHORT).show();
                         }
                     });
                 }

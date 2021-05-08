@@ -34,8 +34,9 @@ public class UpdateCollectionActivity extends AppCompatActivity implements View.
         setContentView(R.layout.activity_update_collection);
 
         sDesc = findViewById(R.id.txtNewDesc);
+
         editShelfButton = findViewById(R.id.editShelf);
-        sName.setText(shelfID);
+
         editShelfButton.setOnClickListener(this);
 
         if(getIntent().hasExtra("EXTRA_ID")) {
@@ -59,7 +60,7 @@ public class UpdateCollectionActivity extends AppCompatActivity implements View.
                 public void onSuccess(Void aVoid) {
                     Snackbar.make(v, "Shelf is updated!", Snackbar.LENGTH_SHORT).show();
                     startActivity(new Intent(UpdateCollectionActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-                }
+                    finish();                }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {

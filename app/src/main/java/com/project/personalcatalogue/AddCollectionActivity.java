@@ -63,11 +63,13 @@ public class AddCollectionActivity extends AppCompatActivity implements View.OnC
                     Log.d("Success", "onSuccess: Bookshelf is created for "+ userID);
                     Snackbar.make(v, "Bookshelf is created!", Snackbar.LENGTH_SHORT).show();
                     startActivity(new Intent (AddCollectionActivity.this, MainActivity.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                    finish();
                 }
             }).addOnFailureListener(new OnFailureListener() {
                 @Override
                 public void onFailure(@NonNull Exception e) {
                     Log.e("Fail", "That did not work. ", e);
+                    Snackbar.make(v, "That didn't work. Maybe try again?", Snackbar.LENGTH_SHORT).show();
                 }
             });
         }

@@ -68,6 +68,7 @@ public class UserFragment extends Fragment {
             {
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(mContext, LoginActivity.class));
+
             }
         });
 
